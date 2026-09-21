@@ -1,0 +1,9 @@
+{
+  "name": "artgrafii/bindrr-web",
+  "description": "bindrr web app (mlobox monorepo root_path)",
+  "type": "project",
+  "require": {
+    "php": "^8.2"
+  },
+  "minimum-stability": "stable"
+}
