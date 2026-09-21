@@ -1,0 +1,4 @@
+#!/usr/bin/env php
+<?php
+// Placeholder artisan for mlobox root_path validation. Full Laravel install comes via remote sandbox work.
+echo "bindrr apps/web placeholder artisan\n";
