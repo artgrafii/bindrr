@@ -15,7 +15,7 @@ final class UploadLimit
     }
 
     /**
-     * Human size without the intl extension (Number::fileSize needs it).
+     * Human size for a stored file. Uses sprintf so preview PHP without intl can render it.
      */
     public static function formatBytes(int|float $bytes): string
     {
@@ -29,12 +29,18 @@ final class UploadLimit
             }
         }
 
-        return number_format($bytes, 0).' '.$units[$i];
+        return sprintf('%d %s', (int) round($bytes), $units[$i]);
     }
 
     public static function label(): string
     {
-        return self::formatBytes(self::bytes());
+        $kilobytes = self::kilobytes();
+
+        if ($kilobytes >= 1024) {
+            return sprintf('%d MB', (int) round($kilobytes / 1024));
+        }
+
+        return sprintf('%d KB', $kilobytes);
     }
 
     public static function message(): string
