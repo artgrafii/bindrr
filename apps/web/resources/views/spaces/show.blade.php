@@ -99,7 +99,7 @@
                             {{ $file->name }}
                         </a>
                         <p class="flex flex-wrap gap-x-3 text-sm text-muted dark:text-stone-400">
-                            <span>{{ \Illuminate\Support\Number::fileSize($file->size) }}</span>
+                            <span>{{ \App\Spaces\UploadLimit::formatBytes($file->size) }}</span>
                             <time datetime="{{ \Illuminate\Support\Carbon::createFromTimestamp($file->updatedAt)->toIso8601String() }}">
                                 {{ \Illuminate\Support\Carbon::createFromTimestamp($file->updatedAt)->timezone(config('app.timezone'))->format('M j, Y g:i A') }}
                             </time>

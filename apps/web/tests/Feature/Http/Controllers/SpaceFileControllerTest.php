@@ -18,6 +18,7 @@ it('uploads a file onto the space disk and lists it', function () {
     $this->get(route('spaces.show', 'garden-notes'))
         ->assertOk()
         ->assertSee('notes.txt')
+        ->assertSee('13 B')
         ->assertSee('Saved notes.txt.')
         ->assertDontSee('Nothing in this space yet');
 });
