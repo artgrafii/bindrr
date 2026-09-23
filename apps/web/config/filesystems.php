@@ -49,8 +49,11 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            // Empty strings must stay null. Preview Lambda can set these to ""
+            // and the S3 client then signs with them instead of the role.
+            'key' => env('AWS_ACCESS_KEY_ID') ?: null,
+            'secret' => env('AWS_SECRET_ACCESS_KEY') ?: null,
+            'token' => env('AWS_SESSION_TOKEN') ?: null,
             'region' => env('AWS_DEFAULT_REGION', 'ap-northeast-2'),
             'bucket' => env('AWS_BUCKET', 'artgrafii-bindrr-156777722327'),
             'url' => env('AWS_URL'),

@@ -129,6 +129,7 @@ describe('show', function () {
             ->assertOk()
             ->assertSee('Garden Notes')
             ->assertSee('Nothing in this space yet')
+            ->assertSee('Up to 10 MB.')
             ->assertSee('Your agents read and write the same files.');
     });
 
@@ -158,6 +159,7 @@ describe('show', function () {
         $this->get(route('spaces.show', 'garden-notes'))
             ->assertOk()
             ->assertSee('from-agent.txt')
+            ->assertSee('10 B')
             ->assertDontSee('.space.json');
     });
 });
